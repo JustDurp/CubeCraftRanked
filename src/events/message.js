@@ -15,18 +15,16 @@ module.exports = class {
             return;
         });
 
-        if (message.channel.id == '659823869720264714') {
-            message.react('722817478119653458')
-            message.react('722817545362735145')
-        }
         const { con } = require('../app')
         con.query(`SELECT * FROM marry WHERE userid = '${message.author.id}'`, (err, row) => {
-            if (!row) {
+            if (row.length < 1) {
                 con.query(`INSERT INTO marry(userid, marriedWith, married, marriedAt) VALUES('${message.author.id}', 'null', 'no', 'never')`, (err, row) => {
                     if (err) return console.log(err);
                 });
             }
         });
+
+
 
         if (message.author.bot || !message.guild) return;
 

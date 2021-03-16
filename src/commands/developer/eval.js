@@ -20,6 +20,7 @@ class Eval extends Command {
     }
 
     async run(message, args) {
+        const { con } = require('../../app')
 
         if (message.author.id === '281348487340359681') {
 
@@ -41,7 +42,7 @@ class Eval extends Command {
 
                 let evaluated = eval(code);
 
-                if (code.includes('process.env')) evaluated = 'Denk je dat ik echt zo dom ben?'
+                //if (code.includes('process.env')) evaluated = 'Denk je dat ik echt zo dom ben?'
                 if (evaluated.length >= 1020) evaluated = evaluated.substr(evaluated.length - 1019, evaluated.length);
 
                 let evalEmbed = new MessageEmbed()

@@ -7,11 +7,11 @@ const { MessageEmbed } = require('discord.js');
 const { Command } = require('../../api/Command');
 
 // Test
-class Test extends Command {
+class Eval extends Command {
 
     constructor(client) {
         super(client, {
-            name: 'test',
+            name: 'say',
             description: 'Test command',
             category: 'developer'
         });
@@ -21,16 +21,14 @@ class Test extends Command {
 
     async run(message, args) {
 
-        var msg = message.channel.send('Pinging database...')
-        msg.delete({timeout: 1000})
-        var m = message.channel.send('Pinged database')
-        m.delete({timeout: 1000})
+        if (message.author.id === '281348487340359681') {
+            message.delete()
+            return message.channel.send(args.slice(0).join(" "));
 
-        message.channel.send('Ran scan in 7000ms')
-        
+        }else return;
     }
 
 }
 
 // Module Exports
-module.exports = Test;
+module.exports = Eval;
